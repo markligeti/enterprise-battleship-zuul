@@ -1,0 +1,12 @@
+zuul:
+  routes:
+    matchmaking:
+      path: /matchmaking/**
+      serviceId: matchmaking-service
+    battleship:
+      path: /battleship/**
+      serviceId: battleship-game-service
+
+ribbon:
+  eureka:
+    enabled: false
