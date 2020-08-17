@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git url: 'https://github.com/markligeti/enterprise-battleship-zuul.git', branch: 'dev'
+                git url: 'https://github.com/markligeti/enterprise-battleship-zuul.git'
             }
         }
         stage('Create Container') {
