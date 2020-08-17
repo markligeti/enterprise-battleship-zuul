@@ -20,7 +20,8 @@ pipeline {
         }
         stage('Create Container') {
             steps {
-                sh "docker build -t ${DOCKER_REPO}:latest -t ${DOCKER_REPO}:${BUILD_NUMBER} ."
+                sh "docker build -t ${DOCKER_REPO}:latest ."
+                sh "docker build -t ${DOCKER_REPO}:${BUILD_NUMBER} ."
             }
         }
         stage('Deployment') {
