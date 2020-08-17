@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git url: 'https://github.com/markligeti/enterprise-battleship-zuul.git'
+                git url: 'https://github.com/markligeti/enterprise-battleship-zuul.git', branch: 'feature/configure-with-eureka'
             }
         }
         stage('Build') {
