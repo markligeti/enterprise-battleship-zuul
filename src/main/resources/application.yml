@@ -1,12 +1,25 @@
+server:
+  port: 8400
+
+spring:
+  application:
+    name: zuul-gateway
+
 zuul:
   routes:
     matchmaking:
       path: /matchmaking/**
-      serviceId: matchmaking-service
+      serviceId: battleship-matchmaking
     battleship:
       path: /battleship/**
-      serviceId: battleship-game-service
+      serviceId: battleship-game
 
-ribbon:
-  eureka:
-    enabled: false
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://battleshipgame.tk:30761/eureka
+    instance:
+      hostname: localhost
+
