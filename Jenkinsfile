@@ -13,6 +13,11 @@ pipeline {
                 git url: 'https://github.com/markligeti/enterprise-battleship-zuul.git'
             }
         }
+        stage('Build') {
+            steps {
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+        }
         stage('Create Container') {
             steps {
                 sh "docker build -t ${DOCKER_REPO}:latest -t ${DOCKER_REPO}:${BUILD_NUMBER} ."
