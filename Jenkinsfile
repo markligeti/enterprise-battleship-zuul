@@ -4,7 +4,7 @@ pipeline {
         BUILDVAR = "var_build_number"
         TOKEN = credentials("KubernetesToken")
         K8S_URL = credentials("URL")
-        YAML = "zuul-deployment.json"
+        JSON = "zuul-deployment.json"
         DOCKER_REPO = "safranek/enterprise-battleship-zuul"
     }
     stages {
@@ -30,9 +30,9 @@ pipeline {
                 sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                 sh "docker push ${DOCKER_REPO}:latest"
                 sh "docker push ${DOCKER_REPO}:${BUILD_NUMBER}"
-                sh "sed -i -e 's#${BUILDVAR}#${BUILD_NUMBER}#' ${YAML}"
+                sh "sed -i -e 's#${BUILDVAR}#${BUILD_NUMBER}#' ${JSON}"
                 sh "curl https://${K8S_URL}:6443/apis/apps/v1/namespaces/default/deployments/zuul-gateway \
-                -k -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TOKEN}' --data @${YAML} --request PUT"
+                -k -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TOKEN}' --data @${JSON} --request PUT"
                 }
             }
         }
