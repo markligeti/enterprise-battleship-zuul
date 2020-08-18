@@ -4,7 +4,7 @@ pipeline {
         BUILDVAR = "var_build_number"
         TOKEN = credentials("KubernetesToken")
         K8S_URL = credentials("URL")
-        YAML = "zuul-deployment.yaml"
+        YAML = "zuul-deployment.json"
         DOCKER_REPO = "safranek/enterprise-battleship-zuul"
     }
     stages {
