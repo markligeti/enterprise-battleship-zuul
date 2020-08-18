@@ -4,6 +4,7 @@
   "metadata": {
     "name": "zuul-gateway",
     "labels": {
+      "build_number": "var_build_number",
       "k8s-app": "zuul-gateway",
       "service": "zuul"
     }
@@ -20,6 +21,7 @@
       "metadata": {
         "name": "zuul-gateway",
         "labels": {
+          "build_number": "var_build_number",
           "k8s-app": "zuul-gateway",
           "service": "zuul"
         }
