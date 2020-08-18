@@ -32,7 +32,7 @@ pipeline {
                 sh "docker push ${DOCKER_REPO}:${BUILD_NUMBER}"
                 sh "sed -i -e 's#${BUILDVAR}#${BUILD_NUMBER}#' ${YAML}"
                 sh "curl https://${K8S_URL}:6443/apis/apps/v1/namespaces/default/deployments/zuul-gateway \
-                -k -H 'Content-Type: application/yaml' -H 'Authorization: Bearer ${TOKEN}' --data @${YAML} --request PUT"
+                -k -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TOKEN}' --data @${YAML} --request PUT"
                 }
             }
         }
